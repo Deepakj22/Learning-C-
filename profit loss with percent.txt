@@ -1,0 +1,44 @@
+using System;
+
+class ProfitLossCalculator
+{
+    static void Main()
+    {
+        // Input cost price and selling price
+        Console.Write("Enter the cost price: ");
+        if (double.TryParse(Console.ReadLine(), out double costPrice))
+        {
+            Console.Write("Enter the selling price: ");
+            if (double.TryParse(Console.ReadLine(), out double sellingPrice))
+            {
+                // Calculate profit or loss
+                double profitLoss = sellingPrice - costPrice;
+
+                // Calculate profit or loss percentage
+                double profitLossPercentage = (profitLoss / costPrice) * 100;
+
+                // Display the result
+                if (profitLoss > 0)
+                {
+                    Console.WriteLine($"Profit: {profitLoss:C2} ({profitLossPercentage:F2}%)");
+                }
+                else if (profitLoss < 0)
+                {
+                    Console.WriteLine($"Loss: {Math.Abs(profitLoss):C2} ({Math.Abs(profitLossPercentage):F2}%)");
+                }
+                else
+                {
+                    Console.WriteLine("No Profit, No Loss");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input for selling price. Please enter a valid numeric value.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid input for cost price. Please enter a valid numeric value.");
+        }
+    }
+}
